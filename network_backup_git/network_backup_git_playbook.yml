@@ -33,10 +33,10 @@
   hosts: reachable
   gather_facts: false
   vars:
-#    backup_dir: "{{ playbook_dir }}/net_backups"
-    backup_dir: "/opt/net_backups"
+#    backup_dir: "{{ playbook_dir }}/Backups"
+    backup_dir: "/opt/Backups"
     backup_file: "{{ backup_dir }}/{{ inventory_hostname }}"
-    backup_repo: git@github.com:beasleymd/Backups.git
+    backup_repo: git@github.com:beasleymd/Backups
     git_name: Git Backup
     git_email: beasleymd@yahoo.com
 
