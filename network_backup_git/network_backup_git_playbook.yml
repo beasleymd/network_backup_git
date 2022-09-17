@@ -1,7 +1,7 @@
 ---
 - name: network device backup to git
-#  hosts: mtk1
-  hosts: cat_update_lab
+#  hosts: routers
+  hosts: rtr3
   gather_facts: false
   vars:
     # Setting this to true here or overriding it in a playbook will cause the run to
@@ -36,9 +36,9 @@
 #    backup_dir: "{{ playbook_dir }}/net_backups"
     backup_dir: "/opt/net_backups"
     backup_file: "{{ backup_dir }}/{{ inventory_hostname }}"
-    backup_repo: git@github.com:gregsowell/backups
+    backup_repo: git@github.com:beasleymd/Backups
     git_name: Git Backup
-    git_email: gitbackup@gregsowell.com
+    git_email: beasleymd@yahoo.com
 
   tasks:
 
