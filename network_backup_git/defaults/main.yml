@@ -1,13 +1,13 @@
 ---
 # defaults file for network_backup_git
 # the local git repo where configs are stored for push/pull
-backup_dir: "{{ playbook_dir }}/net_backups"
+backup_dir: "{{ playbook_dir }}/Backups"
 
 # what format to save the file as in the git repo
 backup_file: "{{ backup_dir }}/{{ inventory_hostname }}"
 
 # location of the repo
-backup_repo: git@github.com:beasleymd/Backups.git
+backup_repo: git@github.com:beasleymd/Backups
 
 # git update details
 git_name: Michael Beasley
