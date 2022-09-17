@@ -1,8 +1,8 @@
 ---
 - name: network device backup to git
-#  hosts: crtr3,sw1,crtr2,sw2,mtk1
-#  hosts: mtk1
-  hosts: cat_upgrade
+#  hosts: routers
+#  hosts: rtr3
+  hosts: rtr3
   gather_facts: false
   vars:
     backup_dir: "{{ playbook_dir }}/net_backups"
