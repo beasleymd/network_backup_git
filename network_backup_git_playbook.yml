@@ -2,7 +2,7 @@
 - name: network device backup to git
 #  hosts: routers
 #  hosts: rtr3
-  hosts: rtr3
+  hosts: routers
   gather_facts: false
   vars:
     backup_dir: "{{ playbook_dir }}/Backups"
