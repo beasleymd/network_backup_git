@@ -16,7 +16,7 @@
       block:
         - name: Ping for reachability
           command: ping -c1 {{ ansible_host }}
-          delegate_to: localhost
+          delegate_to: ansible-1
           register: ping_result
           ignore_errors: true
 
@@ -46,7 +46,7 @@
 #  - name: install git client
 #    run_once: True
 #    become: True
-#    delegate_to: localhost
+#    delegate_to: ansible-1
 #    yum:
 #      name: git
 #      state: latest
