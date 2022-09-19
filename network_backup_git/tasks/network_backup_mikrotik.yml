@@ -6,7 +6,7 @@
 #    ansible_become_method: enable
   block:
     - name: create a local backup folder
-      delegate_to: localhost
+      delegate_to: ansible-1
       file: 
         path: "{{ playbook_dir }}/backup"
         state: directory
@@ -38,7 +38,7 @@
         bup_temp_file: "{{ playbook_dir }}/backup/{{ inventory_hostname }}"
 
     - name: save output to a file
-      delegate_to: localhost
+      delegate_to: ansible-1
       copy:
         content: "===system package print detail===\n{{ SYSPKGDTL.stdout|join('\n') }}\n===system routerboard print===\n{{ SYSRTRBRD.stdout|join('\n') }}\n===system license print===\n{{ SYSLIC.stdout|join('\n') }}\n===export configuration===\n{{ EXPORT.stdout | join('\n') }}\n"
         dest: "{{ bup_temp_file }}"
