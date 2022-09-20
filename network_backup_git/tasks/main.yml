@@ -42,10 +42,13 @@
   - name: Copy the backup to repo
     copy:
   #    src: "{{ bup_temp_file }}"
-      src: " /runner/project/network_backup_git/backup/{{ inventory_hostname }} "
-      dest: "{{ backup_file }}"
+  #    src: " /runner/project/network_backup_git/backup/{{ inventory_hostname }} "
+  #    dest: "{{ backup_file }}"
+      src: "{{ config_out.backup_path }}"
+      dest: "/backup/
     register: copy_result
-    delegate_to: ansible-1
+  #  delegate_to: ansible-1
+    delegate_to: backup-server
       
   - name: Delete the temp file
     file:
