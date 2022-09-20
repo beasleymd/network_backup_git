@@ -52,7 +52,8 @@
       
   - name: Delete the temp file
     file:
-      path: "{{ bup_temp_file }}"
+  #    path: "{{ bup_temp_file }}"
+      path: "{{ config_output.backup_path }}"
       state: absent
     changed_when: False
     delegate_to: ansible-1
