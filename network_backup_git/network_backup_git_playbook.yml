@@ -32,6 +32,7 @@
 - name: network device backup to git
   hosts: reachable
   gather_facts: false
+  become: true
   vars:
 #    backup_dir: "{{ playbook_dir }}/Backups"
     backup_dir: "/opt/Backups"
