@@ -34,7 +34,7 @@
         path: "{{ config_output.backup_path }}"
         regexp: '^!Time.*$'
       changed_when: False
-      delegate_to: localhost
+      delegate_to: ansible-1
 
     - name: save variable
       set_fact: 

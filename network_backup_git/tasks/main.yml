@@ -3,7 +3,7 @@
   - name: create git repo folder
     become: True
     run_once: true
-    delegate_to: localhost
+    delegate_to: ansible-1
     file:
       path: "{{ backup_dir }}"
       state: directory
@@ -11,7 +11,7 @@
 
 # tasks file for network_backup_git
   - name: make sure the git repo is up to date/exists on localhost
-    delegate_to: localhost
+    delegate_to: ansible-1
     run_once: True
     become: True
     git:
@@ -41,25 +41,29 @@
 
   - name: Copy the backup to repo
     copy:
-      src: "{{ bup_temp_file }}"
-      dest: "{{ backup_file }}"
-    register: copy_result
-    delegate_to: localhost
-
+  #    src: "{{ bup_temp_file }}"
+  #    src: " /runner/project/network_backup_git/backup/{{ inventory_hostname }}"
+      src: "{{ config_output.backup_path }}"
+  #    dest: "{{ backup_file }}"
+      dest: "/Backups/"
+      register: copy_result
+    delegate_to: ansible-1
+  #  delegate_to: backup-server
+      
   - name: Delete the temp file
     file:
       path: "{{ bup_temp_file }}"
       state: absent
     changed_when: False
-    delegate_to: localhost
+    delegate_to: ansible-1
 
   - name: get timestamp
     set_fact: time="{{lookup('pipe','date \"+%Y-%m-%d-%H-%M\"')}}"
     run_once: true
 
   - name: Add any new backups to the repository - ignore key checking
-#    shell: "git add *; git commit -m '{{ time }}'; git push"
-    shell: "git add *; git commit -m '{{ time }}'; git config --global core.sshCommand 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'; git push"
+    shell: "git add *; git commit -m '{{ time }}'; git push --repo='https://github.com/beasleymd/Backups.git'" 
+#    shell: "git add *; git commit -m '{{ time }}'; git config --global core.sshCommand 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'; git push"
 
     args:
       chdir: "{{ backup_dir }}"
@@ -68,9 +72,9 @@
       GIT_COMMITTER_EMAIL: "{{ git_email | default(omit) }}"
       GIT_AUTHOR_NAME: "{{ git_name | default(omit) }}"
       GIT_AUTHOR_EMAIL: "{{ git_email | default(omit) }}"
-    delegate_to: localhost
+    delegate_to: ansible-1
     changed_when: git_return.stderr != "Everything up-to-date"
     run_once: true
-    connection: local
+    #connection: local
     register: git_return
     become: True
