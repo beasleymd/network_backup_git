@@ -1,7 +1,8 @@
 ---
 # defaults file for network_backup_git
 # the local git repo where configs are stored for push/pull
-backup_dir: "{{ playbook_dir }}/Backups/"
+#backup_dir: "{{ playbook_dir }}/Backups/"
+backup_dir: "/runner/project/network_backup_git/backup/Backups"
 
 # what format to save the file as in the git repo
 backup_file: "{{ backup_dir }}/{{ inventory_hostname }}"
