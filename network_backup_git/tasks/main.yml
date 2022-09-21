@@ -46,7 +46,7 @@
       src: "{{ config_output.backup_path }}"
       dest: "{{ backup_file }}"
   #    dest: "/Backups/"
-  #    register: copy_result
+      register: copy_result
   #  delegate_to: ansible-1
     delegate_to: backup-server
       
