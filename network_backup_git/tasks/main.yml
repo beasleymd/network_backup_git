@@ -47,8 +47,8 @@
   #    dest: "{{ backup_file }}"
       dest: "/Backups/"
       register: copy_result
-  #  delegate_to: ansible-1
-    delegate_to: backup-server
+    delegate_to: ansible-1
+  #  delegate_to: backup-server
       
   - name: Delete the temp file
     file:
