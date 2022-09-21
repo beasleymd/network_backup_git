@@ -42,7 +42,8 @@
   - name: Copy the backup to repo
     copy:
   #    src: "{{ bup_temp_file }}"
-      src: " /runner/project/network_backup_git/backup/{{ inventory_hostname }} "
+  #    src: " /runner/project/network_backup_git/backup/{{ inventory_hostname }}"
+      src: "{{config_output.backup_path }}"
       dest: "{{ backup_file }}"
     register: copy_result
     delegate_to: ansible-1
