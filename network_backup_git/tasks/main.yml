@@ -41,14 +41,14 @@
 
   - name: Copy the backup to Github repo
     copy:
-  #    src: "{{ bup_temp_file }}"
+      src: "{{ bup_temp_file }}"
   #    src: " /runner/project/network_backup_git/backup/{{ inventory_hostname }}"
-      src: "{{ config_output.backup_path }}"
+  #    src: "{{ config_output.backup_path }}"
       dest: "{{ backup_file }}"
   #    dest: "/Backups/"
       register: copy_result
-  #  delegate_to: ansible-1
-    delegate_to: backup-server
+    delegate_to: ansible-1
+  #  delegate_to: backup-server
       
   - name: Delete the temp file
     file:
