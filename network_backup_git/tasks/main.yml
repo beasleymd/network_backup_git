@@ -44,8 +44,8 @@
   #    src: "{{ bup_temp_file }}"
   #    src: " /runner/project/network_backup_git/backup/{{ inventory_hostname }}"
       src: "{{ config_output.backup_path }}"
-  #    dest: "{{ backup_file }}"
-      dest: "/Backups/"
+      dest: "{{ backup_file }}"
+  #    dest: "/Backups/"
       register: copy_result
   #  delegate_to: ansible-1
     delegate_to: backup-server
